@@ -37,7 +37,9 @@ export default class PickerAny extends Component {
 		selectedValue: PropTypes.any.isRequired,
 		onPickerDone: PropTypes.func,
 		onPickerCancel: PropTypes.func,
-		onValueChange: PropTypes.func
+		onValueChange: PropTypes.func,
+		itemStyle: View.propTypes.style,
+
 	};
 
 	static defaultProps = {
@@ -206,6 +208,7 @@ export default class PickerAny extends Component {
 			return (
 				<View style={styles.pickerWheel} key={index}>
 					<Picker
+						itemStyle={this.props.itemStyle}
 						selectedValue={this.state.selectedValue[index]}
 						onValueChange={value => {
 							this.pickedValue.splice(index, 1, value);
@@ -293,6 +296,7 @@ export default class PickerAny extends Component {
 		let thirdWheel = this.state.thirdWheelData && (
 			<View style={styles.pickerWheel}>
 				<Picker
+					itemStyle={this.props.itemStyle}
 					ref={'thirdWheel'}
 					selectedValue={this.state.thirdPickedDataIndex}
 					onValueChange={(index) => {
@@ -318,6 +322,7 @@ export default class PickerAny extends Component {
 			<View style={[styles.pickerWrap, {width: this.state.style.width || width}]}>
 				<View style={styles.pickerWheel}>
 					<Picker
+						itemStyle={this.props.itemStyle}
 						ref={'firstWheel'}
 						selectedValue={this.state.firstPickedData}
 						onValueChange={value => {
@@ -355,6 +360,7 @@ export default class PickerAny extends Component {
 				</View>
 				<View style={styles.pickerWheel}>
 					<Picker
+						itemStyle={this.props.itemStyle}
 						ref={'secondWheel'}
 						selectedValue={this.state.secondPickedDataIndex}
 						onValueChange={(index) => {
